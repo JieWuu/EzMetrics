@@ -1,5 +1,5 @@
 # EzMetrics
-## _The eaziest metics library ever_
+## _The eaziest metrics library ever_
 
 Ez metrics is a library that calculates the fitness metrics of your ML model.
 
