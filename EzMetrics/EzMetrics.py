@@ -94,7 +94,3 @@ class EzMetrics:
     def mse(self):
         error=[(a-b)**2 for a,b in zip(self.predicted,self.observed)]
         return (sum(error)/len(self.observed))
-
-    
-    
-    # https://scikit-learn.org/stable/modules/model_evaluation.html
