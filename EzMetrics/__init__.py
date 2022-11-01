@@ -1,1 +1,1 @@
-from EzMetrics import EzMetrics
+from EzMetrics.EzMetrics import EzMetrics

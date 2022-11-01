@@ -13,10 +13,10 @@ setup(
   author = 'Jie Wu, Asier Marinero',                 
   author_email = 'jie.wu@alumni.mondragon.edu, asier.marinero@alumni.mondragon.edu', 
   url = 'https://github.com/JieWuu/EzMetrics',
-  download_url = 'https://github.com/JieWuu/testpackage_jiewu/archive/refs/tags/1.1.tar.gz',  
-  keywords = ['Easy', 'metrics', 'model', 'accuracy', 'precision', 'recall', 'f1', 'roc', 'auc','r2','mae','specificity','sensitivity','mse'], 
+  download_url = 'https://github.com/JieWuu/EzMetrics/archive/refs/tags/v_0.1.tar.gz',  
+  keywords = ['Easy', 'Metrics', 'Model'], 
   long_description=long_description,
-  long_description_content_type="text/markdown",
+  long_description_content_type='text/markdown',
   install_requires=[],
   classifiers=[
     'Development Status :: 3 - Alpha',      
