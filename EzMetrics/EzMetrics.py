@@ -3,10 +3,15 @@ class EzMetrics:
         self.predicted=predicted
         self.observed=observed
 
-        self.tp_fun=lambda pred,obs: sum([a==positive and a==b for a,b in zip(pred,obs)])
-        self.tn_fun=lambda pred,obs: sum([a!=positive and a==b for a,b in zip(pred,obs)])
-        self.fp_fun=lambda pred,obs: sum([a==positive and a!=b for a,b in zip(pred,obs)])
-        self.fn_fun=lambda pred,obs: sum([a!=positive and a!=b for a,b in zip(pred,obs)])
+        observed_values=list(set(self.observed))
+        self.positive=observed_values[0]
+        self.negative=observed_values[1]
+
+        self.tp_fun=lambda pred,obs: sum([a==self.positive and a==b for a,b in zip(pred,obs)])
+        self.tn_fun=lambda pred,obs: sum([a!=self.positive and a==b for a,b in zip(pred,obs)])
+        self.fp_fun=lambda pred,obs: sum([a==self.positive and a!=b for a,b in zip(pred,obs)])
+        self.fn_fun=lambda pred,obs: sum([a!=self.positive and a!=b for a,b in zip(pred,obs)])
+
     
     def precission (self,predicted,observed):
         tp=self.tp_fun(predicted,observed)
@@ -42,6 +47,8 @@ class EzMetrics:
     def f1 (self):
         prec=self.precission(self.predicted,self.observed)
         rec=self.recall(self.predicted,self.observed)
+        if not (prec + rec):
+            prec=0.000001 
         return (2 * (prec * rec) / (prec + rec))
 
 
@@ -58,7 +65,7 @@ class EzMetrics:
         
         puntos_curva=[]  
         for i in puntos_corte:
-            predicted_0=[positive if x >= i else negative for x in self.predicted]
+            predicted_0=[self.positive if x >= i else self.negative for x in self.predicted]
             puntos_curva.append([(1-self.specificity(predicted_0,self.observed)),self.recall(predicted_0,self.observed)])
 
         #grafico y auc
@@ -76,6 +83,8 @@ class EzMetrics:
         media=sum(self.observed)/len(self.observed)
         var_pred=[(x-media)**2 for x in self.predicted]
         var_real=[(x-media)**2 for x in self.observed]
+        if not sum(var_real):
+            var_real=0.000001 
         return (sum(var_pred)/sum(var_real))
 
     def mae(self):
@@ -86,40 +95,6 @@ class EzMetrics:
         error=[(a-b)**2 for a,b in zip(self.predicted,self.observed)]
         return (sum(error)/len(self.observed))
 
-
-if __name__=='__main__':
-    #-----------------------------------------------------------------------
-    uno=['a','a','a','b']
-    dos=['a','a','a','a']
-    # #se considera 'positive' el primer valor de la lista 'predicted' #ahora mismo lo he hecho a mano, habria que ver si pedir input o que
-    # #positive= uno[0]
-    positive= 'a'
-    negative= 'b'
-
-    clasificacion=EzMetrics(uno,dos)
-
-    print(clasificacion.accuracy())
-    print(clasificacion.f1())
-
-    #-----------------------------------------------------------------------
-    uno=[0.8,0.7,0.2,0.3,0.1,0.5,0.6,0.5]
-    dos=['a','a','a','b','b','a','a','b']
-
-    clasificacion=EzMetrics(uno,dos)
-
-    print(clasificacion.roc_auc())
-
-    #-----------------------------------------------------------------------
-    uno = [1,3,5,8,23]
-    dos = [2,2,6,10,21]
-
-    clasificacion=EzMetrics(uno,dos)
-
-    print(clasificacion.r2())
-    print(clasificacion.mae())
-    print(clasificacion.mse())
-
-
-
-
+    
+    
     # https://scikit-learn.org/stable/modules/model_evaluation.html
