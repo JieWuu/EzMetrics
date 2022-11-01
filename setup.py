@@ -7,7 +7,7 @@ long_description = (this_directory / "README.md").read_text()
 setup(
   name = 'EzMetrics',     
   packages = ['EzMetrics'],   
-  version = '0.1', 
+  version = '0.2', 
   license='MIT',  
   description = 'An easy package to use for to get metrics from your models',
   author = 'Jie Wu, Asier Marinero',                 

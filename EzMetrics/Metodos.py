@@ -1,4 +1,4 @@
-class EzMetrics:
+class Metodos:
     def __init__(self, predicted, observed):
         self.predicted=predicted
         self.observed=observed
