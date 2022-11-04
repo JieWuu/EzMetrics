@@ -1,4 +1,4 @@
-class Metodos:
+class Metrics:
     def __init__(self, predicted, observed):
         self.predicted=predicted
         self.observed=observed

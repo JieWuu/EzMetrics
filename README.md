@@ -63,8 +63,4 @@ EzMetrics has 6 different metrics available, which one to use depends on your da
 
 MIT
 
-**Free Software, Hell Yeah!**
-
-[//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
-
    [ezm]: <https://github.com/JieWuu/EzMetrics>
