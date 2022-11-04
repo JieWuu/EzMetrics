@@ -18,7 +18,9 @@ And of course EzMetrics itself is open source with a [public repository][ezm] on
 EzMetrics requires no extra libraries to run.
 
 ```sh
-pip install EzMetrics as ezm
+pip install EzMetrics
+
+from EzMetrics import Metrics as ezm
 ```
 ## Usage
 
@@ -26,7 +28,7 @@ Create an object containing a list with the predictions of your model and a list
 containing the actual values por each prediction.
 
 ```sh
-exmpl_obj = EzMetrics( predicted_list, observed_list)
+exmpl_obj = ezm( predicted_list, observed_list)
 ```
 
 Then just choose a metric suited for your data and use it. 
@@ -43,20 +45,20 @@ EzMetrics has 6 different metrics available, which one to use depends on your da
 
 | Discrete classification |  |
 | ------ | ------ |
-| Accuracy | EzMetrics.accuracy() |
-| F1 score | EzMetrics.f1() |
+| Accuracy | Metrics.accuracy() |
+| F1 score | Metrics.f1() |
 
 
 | Probability classification |  |
 | ------ | ------ |
-| Area Under the Curve (AUC) | EzMetrics.roc_auc() |
+| Area Under the Curve (AUC) | Metrics.roc_auc() |
 
 
 | Regression |  |
 | ------ | ------ |
-| R squared | EzMetrics.r2() |
-| Mean Absolute Error | EzMetrics.mae() |
-| Mean Squared Error | EzMetrics.mse() |
+| R squared | Metrics.r2() |
+| Mean Absolute Error | Metrics.mae() |
+| Mean Squared Error | Metrics.mse() |
 
 
 ## License
