@@ -1,4 +1,13 @@
 class Metrics:
+    '''
+    El objetivo de esta clase es calcular metricas de bondad de ajuste para predicciones 
+    de modelos de regresion y clasificacion. 
+    Esta clase nos devuelve la metrica seleccionada tras recibir una lista con los valores 
+    esperados o predichos y una lista con los valores observados o reales.
+    Elementos:
+        predicted: lista con los valores predichos
+        observed: lista con los valores observados
+    '''
     def __init__(self, predicted, observed):
         self.predicted=predicted
         self.observed=observed
@@ -85,7 +94,7 @@ class Metrics:
         var_real=[(x-media)**2 for x in self.observed]
         if not sum(var_real):
             var_real=0.000001 
-        return (sum(var_pred)/sum(var_real))
+        return 1-(sum(var_pred)/sum(var_real))
 
     def mae(self):
         error=[abs(a-b) for a,b in zip(self.predicted,self.observed)]
